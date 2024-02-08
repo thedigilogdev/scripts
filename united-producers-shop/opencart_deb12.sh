@@ -31,7 +31,7 @@ cd /etc/nginx/
 sed -i 's/user\ www\-data\;/user\ admin\;/g' nginx.conf
 
 rm /etc/nginx/sites-enabled/default
-wget https://gist.githubusercontent.com/naearu/48798208e6ea285cfc85fd34a0bc67fb/raw/5907408d621323373bdb3428e2380244cc38cf9d/opencart.conf -O /etc/nginx/sites-enabled/opencart.conf
+wget https://raw.githubusercontent.com/thedigilogdev/scripts/main/united-producers-shop/opencart.conf -O /etc/nginx/sites-enabled/opencart.conf
 
 
 printf "\n\n## Web Base Dir Setting\n\n"
@@ -60,8 +60,3 @@ openssl x509 -req -in server.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateseria
 
 service nginx restart
 service php8.2-fpm restart
-
-
-
-# bash -c "$(wget -qLO - https://gist.githubusercontent.com/naearu/79a0eefb6bdf82ce05bd4018a2fc53be/raw/7ec0f88882496b001080092a447d333e80c23390/opencart_deb12.sh)"
-
