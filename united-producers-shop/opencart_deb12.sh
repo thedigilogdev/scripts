@@ -31,7 +31,6 @@ cd /etc/nginx/
 sed -i 's/user\ www\-data\;/user\ admin\;/g' nginx.conf
 
 rm /etc/nginx/sites-enabled/default
-wget https://raw.githubusercontent.com/thedigilogdev/scripts/main/united-producers-shop/opencart.conf -O /etc/nginx/sites-enabled/opencart.conf
 
 
 printf "\n\n## Web Base Dir Setting\n\n"
@@ -40,6 +39,10 @@ mkdir -p /home/admin/web/public
 mkdir -p /home/admin/log/
 mkdir -p /home/admin/ssl/
 mkdir -p /home/admin/conf/
+
+wget https://raw.githubusercontent.com/thedigilogdev/scripts/main/united-producers-shop/opencart.conf -O /home/admin/conf/opencart-nginx.conf
+
+ln -s /home/admin/conf/opencart-nginx.conf /etc/nginx/sites-enabled/opencart.conf
 
 echo "<?php phpinfo(); ?>" > /home/admin/web/public/index.php
 chown -R admin:admin /home/admin/web
@@ -60,3 +63,8 @@ openssl x509 -req -in server.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateseria
 
 service nginx restart
 service php8.2-fpm restart
+
+
+
+# bash -c "$(wget -qLO - https://raw.githubusercontent.com/thedigilogdev/scripts/main/united-producers-shop/opencart_deb12.sh )"
+
